@@ -5,10 +5,15 @@ using System.Text;
 
 namespace AIGroupProject
 {
-    public class Courses
+    public class Course
     {
-        string professor;
+        Professor professor;
         string theCourse;
-        int maxStudents;
+        int maxStudents = 10;
+
+        public Course()
+        {
+
+        }
     }
 }

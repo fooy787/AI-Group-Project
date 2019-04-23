@@ -11,7 +11,7 @@ namespace AIGroupProject
         private int numStudents;
 
         //List of classes that the population attends
-        private List<Courses> courses;
+        private List<Course> courses;
 
 
         public StudentPop(int numberOfStudents)
@@ -19,7 +19,7 @@ namespace AIGroupProject
             numStudents = numberOfStudents;
         }
 
-        public void AddClass(Courses course)
+        public void AddClass(Course course)
         {
             courses.Add(course);
         }
@@ -29,7 +29,7 @@ namespace AIGroupProject
             return numStudents;
         }
 
-        public List<Courses> getCourses()
+        public List<Course> getCourses()
         {
             return courses;
         }   

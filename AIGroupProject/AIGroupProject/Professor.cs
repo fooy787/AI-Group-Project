@@ -9,21 +9,21 @@ namespace AIGroupProject
     {
         private int ID;
         private string Name;
-        private List<Courses> Classes;
+        private List<Course> Classes;
 
         public Professor(string name, int id)
         {
             Name = name;
             ID = id;
-            Classes = new List<Courses>();
+            Classes = new List<Course>();
         }
 
-        public void AddCourse(Courses course)
+        public void AddCourse(Course course)
         {
             Classes.Add(course);
         }
 
-        public List<Courses> GetCourses()
+        public List<Course> GetCourses()
         {
             return Classes;
         }
