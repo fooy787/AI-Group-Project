@@ -1,0 +1,9 @@
+course, professor, duration
+English, Chris Poynter, 90  
+Algebra, Chase Williams, 150
+Biology, Jackie Ha, 120
+Geology, Abby Dudra, 120
+Drawing, Tyler Evans, 90
+Japanese, Travis Engle, 90
+History, Kelby Kelby, 120
+Calculus, Taylor Driggs, 150
