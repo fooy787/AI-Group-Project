@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AIGroupProject
 {
-    class Main
+    class MainClass
     {
         static void Main(string[] args)
         {
