@@ -1,9 +1,10 @@
-course, professor, duration
-English, Chris Poynter, 90  
-Algebra, Chase Williams, 150
-Biology, Jackie Ha, 120
-Geology, Abby Dudra, 120
-Drawing, Tyler Evans, 90
-Japanese, Travis Engle, 90
-History, Kelby Kelby, 120
-Calculus, Taylor Driggs, 150
+course, c-id, professor, prof-id, duration
+English, 001, Chris Poynter, 111, 90  
+Algebra, 002, Chase Williams, 112, 150
+Biology, 003, Jackie Ha, 113, 120
+Geology, 004, Abby Dudra, 114, 120
+Drawing, 005, Tyler Evans, 115, 90
+Japanese, 006, Travis Engle, 116, 90
+History, 007, Kelby Kelby, 117, 120
+Calculus, 008, Taylor Driggs, 118, 150
+Creative Process, 009, Sam Davis, 119, 90
