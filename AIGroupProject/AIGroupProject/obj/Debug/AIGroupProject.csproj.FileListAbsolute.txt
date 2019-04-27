@@ -1,0 +1,6 @@
+D:\Documents\Programming\AI\AI-Group-Project\AIGroupProject\AIGroupProject\obj\Debug\AIGroupProject.csprojAssemblyReference.cache
+D:\Documents\Programming\AI\AI-Group-Project\AIGroupProject\AIGroupProject\obj\Debug\AIGroupProject.csproj.CoreCompileInputs.cache
+D:\Documents\Programming\AI\AI-Group-Project\AIGroupProject\AIGroupProject\bin\Debug\AIGroupProject.exe
+D:\Documents\Programming\AI\AI-Group-Project\AIGroupProject\AIGroupProject\bin\Debug\AIGroupProject.pdb
+D:\Documents\Programming\AI\AI-Group-Project\AIGroupProject\AIGroupProject\obj\Debug\AIGroupProject.exe
+D:\Documents\Programming\AI\AI-Group-Project\AIGroupProject\AIGroupProject\obj\Debug\AIGroupProject.pdb
