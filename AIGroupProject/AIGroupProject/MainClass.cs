@@ -45,8 +45,9 @@ namespace AIGroupProject
                         List<string> info = line.Split(',').ToList();
                         if (lineNum != 0)
                         {
-                            Course c = new Course(info[0].Trim(), Int32.Parse(info[1]));
                             Professor p = new Professor(info[2].Trim(), Int32.Parse(info[3]));
+                            Course c = new Course(info[0].Trim(), Int32.Parse(info[1]), p);
+
                             courses.Add(c);
                             p.AddCourse(c);
 
