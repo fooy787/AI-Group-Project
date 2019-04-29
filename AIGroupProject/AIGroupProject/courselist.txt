@@ -1,5 +1,5 @@
 course, c-id, professor, prof-id, duration
-English, 001, Chris Poynter, 111, 90  
+English, 001, Chris Poynter, 111, 90
 Algebra, 002, Chase Williams, 112, 150
 Biology, 003, Jackie Ha, 113, 120
 Geology, 004, Abby Dudra, 114, 120
