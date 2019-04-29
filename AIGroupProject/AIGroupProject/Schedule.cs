@@ -132,9 +132,10 @@ namespace AIGroupProject
                 classes.Add(new Course("", 000), 1);
         }
         //calculates the fitness value of the chromosome
-        public void CalculateFitness()
+        public int CalculateFitness()
         {
             int score = 0;
+            return score;
        
         }
 
@@ -165,7 +166,19 @@ namespace AIGroupProject
         //initializes the GA
         public GA(int numChromosomes, int numReplacingChromosomes, int bestChromIndex)
         {
+            while(true)
+            {
+                Schedule best = GetBest();
 
+                List<Schedule> offspring;
+                for(int i = 0; i < numReplacingChromosomes; i++ )
+                {
+                    Schedule p1 = chromosomes[(new Random().Next() % chromosomes.Count)];
+                    Schedule p2 = chromosomes[(new Random().Next() % chromosomes.Count)];
+                    offspring.Add(p1.Crossover(p2));
+                    offspring[i].Mutation();
+                }
+            }
         }
 
         //returns our best chromosome in the population
