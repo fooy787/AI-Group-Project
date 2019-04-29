@@ -5,9 +5,13 @@ using System.Text;
 
 namespace AIGroupProject
 {
+    
     //our "Chromosome"
     class Schedule
     {
+        public static int DAYHOURS = 10;
+        public static int DAYNUM = 5;
+
         private int numCrossoverPoints;
         private int mutationSize;
 
@@ -15,6 +19,13 @@ namespace AIGroupProject
         private int mutationProb;
 
         private float fitnessValue;
+
+        //class table for our chromosome, used to for first timeslot
+        //used by a class
+        private Dictionary<Course, int> classes;
+
+        //time slots, 1 entry is 1 hour of class
+        private List<List<Course>> timeSlots;
         
 
         //initializes chromosomes
@@ -41,7 +52,34 @@ namespace AIGroupProject
         //our crossover function, which returns the offspring
         public Schedule Crossover(Schedule parent2)
         {
+            Random rand = new Random();
 
+            int r = rand.Next();
+
+            //check probability of crossover
+            if(r % 100 > crossoverProb)
+            {
+                //no crossover happened, copy first parent
+                return new Schedule(this);
+            }
+
+            //new chromosome
+            Schedule n = new Schedule(this);
+
+            //number of classes
+            int size = classes.Count;
+
+            List<bool> crossPoints = new List<bool>(size);
+
+            for(int i = numCrossoverPoints; i > 0; i--)
+            {
+                while(true)
+                {
+
+                    int p = new Random().Next() % size;
+                    //if()
+                }
+            }
 
         }
 
@@ -54,6 +92,8 @@ namespace AIGroupProject
         //calculates the fitness value of the chromosome
         public void CalculateFitness()
         {
+            int score = 0;
+
             
         }
 
