@@ -27,6 +27,16 @@ namespace AIGroupProject
         {
             return Classes;
         }
-        
+
+        public string getName()
+        {
+            string copy = Name;
+            return copy;
+        }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

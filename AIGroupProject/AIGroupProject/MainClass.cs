@@ -9,6 +9,7 @@ namespace AIGroupProject
 {
     class MainClass
     {
+        [STAThread]
         static void Main(string[] args)
         {
             HashSet<Professor> profs = new HashSet<Professor>();
@@ -44,10 +45,14 @@ namespace AIGroupProject
                         List<string> info = line.Split(',').ToList();
                         if (lineNum != 0)
                         {
-                            Course c = new Course(info[0], Int32.Parse(info[1]));
-                            Professor p = new Professor(info[2], Int32.Parse(info[3]));
+                            Course c = new Course(info[0].Trim(), Int32.Parse(info[1]));
+                            Professor p = new Professor(info[2].Trim(), Int32.Parse(info[3]));
                             courses.Add(c);
-                            profs.Add(p);
+                            p.AddCourse(c);
+
+                            if(!profs.Contains(p))
+                                profs.Add(p);
+
                         }
                         line = "";
                     }
@@ -56,6 +61,11 @@ namespace AIGroupProject
                 i++;
             }
 
+            // ??? ahhhhhhhhhhhhhhh it's 4am and I don't know what I'm doing
+            GA genAl = new GA(4, 1, 0);
+
+
+            Console.Read();
         }
     }
 }

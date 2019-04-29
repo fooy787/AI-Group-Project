@@ -8,3 +8,7 @@ Japanese, 006, Travis Engle, 116, 90
 History, 007, Kelby Kelby, 117, 120
 Calculus, 008, Taylor Driggs, 118, 150
 Creative Process, 009, Sam Davis, 119, 90
+Biology 2, 010, Jackie Ha, 113, 120
+Drawing 2, 011, Tyler Evans, 115, 90
+Honors English, 112, Chris Poynter, 111, 90
+Linear Algebra, 013, Chase Williams, 112, 120

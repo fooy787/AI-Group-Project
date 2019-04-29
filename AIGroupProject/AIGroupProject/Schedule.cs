@@ -23,6 +23,7 @@ namespace AIGroupProject
         //class table for our chromosome, used to for first timeslot
         //used by a class
         private Dictionary<Course, int> classes;
+        //private Dictionary<int, Course> classes;
 
         //time slots, 1 entry is 1 hour of class
         private List<List<Course>> timeSlots;
@@ -36,7 +37,6 @@ namespace AIGroupProject
             crossoverProb = cProb;
             mutationProb = mProb;
             fitnessValue = 0;
-            
         }
 
         //if we need to copy a schedule
@@ -76,7 +76,6 @@ namespace AIGroupProject
             {
                 while(true)
                 {
-                    
                     int p = new Random().Next() % size;
                     if( !crossPoints[p] )
                     {
@@ -126,15 +125,17 @@ namespace AIGroupProject
         //Mutates the chromosome
         public void Mutation()
         {
-
+            Random r = new Random();
+            int swap = r.Next(classes.Values.Count);
+            // I don't know. Something needed to be added
+            if (classes.ContainsValue(swap) == false)
+                classes.Add(new Course("", 000), 1);
         }
-
         //calculates the fitness value of the chromosome
         public void CalculateFitness()
         {
             int score = 0;
-
-            
+       
         }
 
         //gets the fitnessValue
@@ -170,7 +171,7 @@ namespace AIGroupProject
         //returns our best chromosome in the population
         public Schedule GetBest()
         {
-
+            return chromosomes.ElementAt(bestChromosomes.Last());
         }
 
         //returns current generation
@@ -181,19 +182,23 @@ namespace AIGroupProject
 
         public void AddToBestGroup(int chromIndex)
         {
-
+            bestListSize++;
+            bestChromosomes.Add(chromIndex);
         }
 
         //returns true if that chromosome is in the bestChromosomes
         public bool IsInBestGroup(int chromIndex)
         {
-
+            if (bestChromosomes.Contains(chromIndex))
+                return true;
+            return false;
         }
 
         //clears the bestChromosomes
         public void ClearBest()
         {
-
+            bestChromosomes.Clear();
+            bestListSize = 0;
         }
     }
 }
