@@ -71,16 +71,56 @@ namespace AIGroupProject
 
             List<bool> crossPoints = new List<bool>(size);
 
+            //determining random crosspoints
             for(int i = numCrossoverPoints; i > 0; i--)
             {
                 while(true)
                 {
-
+                    
                     int p = new Random().Next() % size;
-                    //if()
+                    if( !crossPoints[p] )
+                    {
+                        crossPoints[p] = true;
+                        break;
+                    }
                 }
             }
 
+            //our iterators for our parent chromosomes
+            Dictionary<Course, int>.Enumerator e1 = classes.GetEnumerator();
+            Dictionary<Course, int>.Enumerator e2 = parent2.classes.GetEnumerator();
+
+            //puts us at the first element of the dictionaries
+            e1.MoveNext();
+            e2.MoveNext();
+
+            bool first = new Random().Next() % 2 == 0;
+            for(int i = 0; i < size; i++)
+            {
+                if(first)
+                {
+                    //adds class from 1st parent into the new chromosomes' table
+                    n.classes.Add(e1.Current.Key, e1.Current.Value);
+
+                }
+                else
+                {
+                    //adds class from 2nd parent into the new chromosomes' table
+                    n.classes.Add(e2.Current.Key, e2.Current.Value);
+
+                }
+
+                //crossover point; changes the source chromosome
+                if (crossPoints[i])
+                    first = !first;
+
+                e1.MoveNext();
+                e2.MoveNext();
+            }
+
+            n.CalculateFitness();
+
+            return n;
         }
 
         //Mutates the chromosome
