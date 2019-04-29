@@ -132,11 +132,46 @@ namespace AIGroupProject
                 classes.Add(new Course("", 000), 1);
         }
         //calculates the fitness value of the chromosome
-        public int CalculateFitness()
+        public void CalculateFitness()
         {
-            int score = 0;
-            return score;
-       
+            int score = 0;     
+            
+            foreach(KeyValuePair<Course,int> pair in classes)
+            {
+                int p = pair.Value;
+                int day = p / DAYHOURS;
+                int time = p % DAYHOURS;
+
+                int dur = pair.Key.duration;
+
+                Course current = pair.Key;
+
+                bool profOverlap = false;
+
+                for(int i = dur; i >= 0; i--)
+                {
+                    List<Course> check1 = timeSlots[i];
+                    foreach(Course course in check1)
+                    {
+                        if(current != course)
+                        {
+                            if (!profOverlap && current.ProfessorOverlaps(course))
+                                profOverlap = true;
+
+                            if (profOverlap)
+                                goto Total;
+                        }
+                    }
+                }
+                Total:
+                {
+                    if (!profOverlap)
+                        score++;
+                }
+
+            }
+
+            fitnessValue = score / classes.Count * DAYNUM;           
         }
 
         //gets the fitnessValue
@@ -170,7 +205,7 @@ namespace AIGroupProject
             {
                 Schedule best = GetBest();
 
-                List<Schedule> offspring;
+                List<Schedule> offspring = new List<Schedule>();
                 for(int i = 0; i < numReplacingChromosomes; i++ )
                 {
                     Schedule p1 = chromosomes[(new Random().Next() % chromosomes.Count)];
