@@ -125,11 +125,59 @@ namespace AIGroupProject
         //Mutates the chromosome
         public void Mutation()
         {
-            Random r = new Random();
-            int swap = r.Next(classes.Values.Count);
-            // I don't know. Something needed to be added
-            if (classes.ContainsValue(swap) == false)
-                classes.Add(new Course("", 000), 1);
+            //Random r = new Random();
+            //int swap = r.Next(classes.Values.Count);
+            //// I don't know. Something needed to be added
+            //if (classes.ContainsValue(swap) == false)
+            //    classes.Add(new Course("", 000), 1);
+            //check mutation probability, leaves if it doesnt mutate
+            if (new Random().Next() % 100 > mutationProb)
+                return;
+
+            int numClasses = classes.Count;
+
+            int numTimes = timeSlots.Count;
+
+            for(int i = mutationSize; i > 0; i--)
+            {
+                //select random chromosome for movement
+                int mpos = new Random().Next() % numClasses;
+
+                int curPos = 0;
+                Course curClass = null;
+                //goes through the courses and sets the curPos and curClass once mpos is 0
+                foreach (KeyValuePair<Course,int> course in classes)
+                {
+                    if (mpos <= 0)
+                        break;
+                    curPos = course.Value;
+                    curClass = course.Key;
+                    mpos--;
+                }
+                              
+                int dur = curClass.duration;
+                int day = new Random().Next() % DAYNUM;
+                int time = new Random().Next() % (DAYHOURS + 1 - dur);
+
+                int pos2 = day * DAYHOURS + DAYHOURS + time;
+
+                //move all timeSlots
+                for(int j = dur - 1; j >= 0; j--)
+                {
+                    List<Course> c1 = timeSlots[curPos + j];
+                    foreach(Course courseToRemove in c1)
+                    {
+                        if(courseToRemove == curClass)
+                        {
+                            c1.Remove(courseToRemove);
+                            break;
+                        }
+                    }
+                    timeSlots[pos2 + j].Add(curClass);
+                }
+                classes[curClass] = pos2;
+            }
+            CalculateFitness();
         }
         //calculates the fitness value of the chromosome
         public void CalculateFitness()
