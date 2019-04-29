@@ -12,8 +12,9 @@ namespace AIGroupProject
         int courseID;
         string theCourse;
         int maxStudents = 10;
-        public int duration;
         Professor profTeaching;
+        public int duration;
+        
 
         public Course(string name, int ID, Professor prof)
         {

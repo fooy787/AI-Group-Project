@@ -173,6 +173,7 @@ namespace AIGroupProject
                             break;
                         }
                     }
+                    //put curClass in this timeSlot
                     timeSlots[pos2 + j].Add(curClass);
                 }
                 classes[curClass] = pos2;

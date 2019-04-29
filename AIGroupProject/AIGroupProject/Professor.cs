@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AIGroupProject
 {
-    class Professor
+    public class Professor
     {
         private int ID;
         private string Name;
