@@ -125,11 +125,6 @@ namespace AIGroupProject
         //Mutates the chromosome
         public void Mutation()
         {
-            //Random r = new Random();
-            //int swap = r.Next(classes.Values.Count);
-            //// I don't know. Something needed to be added
-            //if (classes.ContainsValue(swap) == false)
-            //    classes.Add(new Course("", 000), 1);
             //check mutation probability, leaves if it doesnt mutate
             if (new Random().Next() % 100 > mutationProb)
                 return;
@@ -250,6 +245,8 @@ namespace AIGroupProject
         //initializes the GA
         public GA(int numChromosomes, int numReplacingChromosomes, int bestChromIndex)
         {
+            chromosomes = new List<Schedule>();
+            /*
             while(true)
             {
                 Schedule best = GetBest();
@@ -262,7 +259,37 @@ namespace AIGroupProject
                     offspring.Add(p1.Crossover(p2));
                     offspring[i].Mutation();
                 }
+            }*/
+            for (int i = 0; i < numChromosomes; i++)
+            {
+                Schedule s = new Schedule(new Random().Next(1, 10), 10, new Random().Next(1, 3), new Random().Next(1, 3));
+                chromosomes.Add(s);
             }
+
+            float fittest = 0;
+            for (int i = 0; i < chromosomes.Count; i++)
+            {
+                chromosomes[i].CalculateFitness();
+                fittest = chromosomes[i].GetFitness();
+                if (chromosomes[i].GetFitness() > fittest)
+                {
+                    bestChromosomes.Clear();
+                    fittest = chromosomes[i].GetFitness();
+                    bestChromosomes.Add(i);
+                    bestListSize++;
+                }
+            }
+
+            currentGeneration = 0;
+            for (int i = 0; i < numReplacingChromosomes; i++)
+            {
+                Schedule p1 = chromosomes[(new Random().Next() % chromosomes.Count)];
+                Schedule p2 = chromosomes[(new Random().Next() % chromosomes.Count)];
+
+                chromosomes.Add(p1.Crossover(p2));
+                chromosomes[i].Mutation();
+            }
+            currentGeneration++;
         }
 
         //returns our best chromosome in the population

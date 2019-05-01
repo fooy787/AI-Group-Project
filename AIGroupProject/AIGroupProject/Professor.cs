@@ -11,6 +11,7 @@ namespace AIGroupProject
         private string Name;
         private List<Course> Classes;
 
+
         public Professor(string name, int id)
         {
             Name = name;
@@ -30,13 +31,12 @@ namespace AIGroupProject
 
         public string getName()
         {
-            string copy = Name;
-            return copy;
+            return Name;
         }
 
-        public override string ToString()
+        public int getID()
         {
-            return Name;
+            return ID;
         }
     }
 }

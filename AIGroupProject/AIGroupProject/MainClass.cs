@@ -14,6 +14,7 @@ namespace AIGroupProject
         {
             HashSet<Professor> profs = new HashSet<Professor>();
             HashSet<Course> courses = new HashSet<Course>();
+            List<string> names = new List<string>();
             string file;
             if (args.Length == 0)
             {
@@ -51,7 +52,7 @@ namespace AIGroupProject
                             courses.Add(c);
                             p.AddCourse(c);
 
-                            if(!profs.Contains(p))
+                            if (!profs.Contains(p))
                                 profs.Add(p);
 
                         }
@@ -62,11 +63,13 @@ namespace AIGroupProject
                 i++;
             }
 
-            // ??? ahhhhhhhhhhhhhhh it's 4am and I don't know what I'm doing
+
             GA genAl = new GA(4, 1, 0);
 
 
-            Console.Read();
+           
+
+            //Console.Read();
         }
     }
 }
